@@ -677,7 +677,7 @@ newSubMenus = { -- NOTE basicly, what will be happen after clicking these button
     ['police:mdt'] = {
         title = "MDT",
         icon = "#mdt",
-        functionName = "mdt:OpenMDT"
+        functionName = "mdt:OpenMDT"    
     },
     ['police:takeoffmask'] = {
         title = "Mask",
