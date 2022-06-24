@@ -1,9 +1,10 @@
 Config = Config or {}
 
 Config.RosterLink = {
-    ['police'] = 'https://docs.google.com/spreadsheets/d/1Wo3cc64T7Dj9Smz0ExOZx96451KYKweJ/edit#gid=1313411342',
+    ['police'] = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSpGwc0yHwkr288l2CwTBt_ZTBi4jBtahA0nkDpNZbI2g7eYAMYZMT4ZcFvP1lodw/pubhtml',
+    ['sasp'] = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSpGwc0yHwkr288l2CwTBt_ZTBi4jBtahA0nkDpNZbI2g7eYAMYZMT4ZcFvP1lodw/pubhtml',
+    ['bcso'] = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSpGwc0yHwkr288l2CwTBt_ZTBi4jBtahA0nkDpNZbI2g7eYAMYZMT4ZcFvP1lodw/pubhtml',
     ['ambulance'] = '',
-    ['bcso'] = 'https://docs.google.com/spreadsheets/d/1Wo3cc64T7Dj9Smz0ExOZx96451KYKweJ/edit#gid=1313411342',
     ['doj'] = '',
 }
 
