@@ -15,48 +15,11 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Dumping database structure for arp3_0
-CREATE DATABASE IF NOT EXISTS `arp3_0` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `arp3_0`;
+-- Dumping database structure for qpixel
+CREATE DATABASE IF NOT EXISTS `qpixel` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `qpixel`;
 
--- Dumping structure for table arp3_0.adminmenu_admin
-CREATE TABLE IF NOT EXISTS `adminmenu_admin` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cid` varchar(50) DEFAULT NULL,
-  `favorite` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`favorite`)),
-  KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-
--- Dumping structure for table arp3_0.adminmenu_banned
-CREATE TABLE IF NOT EXISTS `adminmenu_banned` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `steam` varchar(50) DEFAULT NULL,
-  `reason` varchar(50) DEFAULT NULL,
-  `length` varchar(50) DEFAULT NULL,
-  `ip` varchar(50) DEFAULT NULL,
-  `discord` varchar(50) DEFAULT NULL,
-  `license` varchar(50) DEFAULT NULL,
-  `DisplayName` varchar(50) DEFAULT NULL,
-  KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-
--- Dumping structure for table arp3_0.adminmenu_log
-CREATE TABLE IF NOT EXISTS `adminmenu_log` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Identifier` varchar(50) DEFAULT NULL,
-  `log` longtext DEFAULT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `date` varchar(50) DEFAULT NULL,
-  KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Data exporting was unselected.
-
--- Dumping structure for table arp3_0.apartments
+-- Dumping structure for table qpixel.apartments
 CREATE TABLE IF NOT EXISTS `apartments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
@@ -70,25 +33,24 @@ CREATE TABLE IF NOT EXISTS `apartments` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.bans
+-- Dumping structure for table qpixel.bans
 CREATE TABLE IF NOT EXISTS `bans` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `banid` varchar(50) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
   `license` varchar(50) DEFAULT NULL,
   `discord` varchar(50) DEFAULT NULL,
   `ip` varchar(50) DEFAULT NULL,
   `reason` text DEFAULT NULL,
+  `bannedby` varchar(255) NOT NULL,
   `expire` int(11) DEFAULT NULL,
-  `bannedby` varchar(255) NOT NULL DEFAULT 'LeBanhammer',
-  PRIMARY KEY (`id`),
-  KEY `license` (`license`),
-  KEY `discord` (`discord`),
-  KEY `ip` (`ip`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `bannedon` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.barnfind
+-- Dumping structure for table qpixel.barnfind
 CREATE TABLE IF NOT EXISTS `barnfind` (
   `owner` varchar(250) DEFAULT NULL,
   `model` varchar(250) DEFAULT NULL,
@@ -102,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `barnfind` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.boosting
+-- Dumping structure for table qpixel.boosting
 CREATE TABLE IF NOT EXISTS `boosting` (
   `#` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(255) NOT NULL,
@@ -115,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `boosting` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.boost_queue
+-- Dumping structure for table qpixel.boost_queue
 CREATE TABLE IF NOT EXISTS `boost_queue` (
   `identifier` varchar(60) NOT NULL,
   `pSrc` int(11) DEFAULT NULL,
@@ -124,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `boost_queue` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.cameras
+-- Dumping structure for table qpixel.cameras
 CREATE TABLE IF NOT EXISTS `cameras` (
   `cid` varchar(50) DEFAULT NULL,
   `cameradata` longtext DEFAULT NULL,
@@ -133,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `cameras` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.crypto
+-- Dumping structure for table qpixel.crypto
 CREATE TABLE IF NOT EXISTS `crypto` (
   `crypto` varchar(50) NOT NULL DEFAULT 'qbit',
   `worth` int(11) NOT NULL DEFAULT 0,
@@ -143,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `crypto` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.crypto_transactions
+-- Dumping structure for table qpixel.crypto_transactions
 CREATE TABLE IF NOT EXISTS `crypto_transactions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -156,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `crypto_transactions` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.dealers
+-- Dumping structure for table qpixel.dealers
 CREATE TABLE IF NOT EXISTS `dealers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '0',
@@ -168,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `dealers` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.dpkeybinds
+-- Dumping structure for table qpixel.dpkeybinds
 CREATE TABLE IF NOT EXISTS `dpkeybinds` (
   `id` varchar(50) DEFAULT NULL,
   `keybind1` varchar(50) DEFAULT 'num4',
@@ -187,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `dpkeybinds` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.dream_jobs
+-- Dumping structure for table qpixel.dream_jobs
 CREATE TABLE IF NOT EXISTS `dream_jobs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identifier` varchar(255) CHARACTER SET latin1 NOT NULL,
@@ -200,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `dream_jobs` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.gloveboxitems
+-- Dumping structure for table qpixel.gloveboxitems
 CREATE TABLE IF NOT EXISTS `gloveboxitems` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `plate` varchar(255) NOT NULL DEFAULT '[]',
@@ -211,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `gloveboxitems` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.houselocations
+-- Dumping structure for table qpixel.houselocations
 CREATE TABLE IF NOT EXISTS `houselocations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
@@ -228,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `houselocations` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.house_plants
+-- Dumping structure for table qpixel.house_plants
 CREATE TABLE IF NOT EXISTS `house_plants` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `building` varchar(50) DEFAULT NULL,
@@ -247,7 +209,7 @@ CREATE TABLE IF NOT EXISTS `house_plants` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.lapraces
+-- Dumping structure for table qpixel.lapraces
 CREATE TABLE IF NOT EXISTS `lapraces` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -262,7 +224,19 @@ CREATE TABLE IF NOT EXISTS `lapraces` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.management_funds
+-- Dumping structure for table qpixel.logs
+CREATE TABLE IF NOT EXISTS `logs` (
+  `Type` text DEFAULT NULL,
+  `Steam` varchar(255) DEFAULT NULL,
+  `Date` timestamp NULL DEFAULT current_timestamp(),
+  `Log` text DEFAULT NULL,
+  `Cid` varchar(50) DEFAULT NULL,
+  `Data` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Data exporting was unselected.
+
+-- Dumping structure for table qpixel.management_funds
 CREATE TABLE IF NOT EXISTS `management_funds` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -275,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `management_funds` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.mdt_bolos
+-- Dumping structure for table qpixel.mdt_bolos
 CREATE TABLE IF NOT EXISTS `mdt_bolos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `author` varchar(50) DEFAULT NULL,
@@ -294,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `mdt_bolos` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.mdt_bulletin
+-- Dumping structure for table qpixel.mdt_bulletin
 CREATE TABLE IF NOT EXISTS `mdt_bulletin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` text NOT NULL,
@@ -307,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `mdt_bulletin` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.mdt_convictions
+-- Dumping structure for table qpixel.mdt_convictions
 CREATE TABLE IF NOT EXISTS `mdt_convictions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` varchar(50) DEFAULT NULL,
@@ -327,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `mdt_convictions` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.mdt_data
+-- Dumping structure for table qpixel.mdt_data
 CREATE TABLE IF NOT EXISTS `mdt_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` varchar(20) NOT NULL,
@@ -343,7 +317,7 @@ CREATE TABLE IF NOT EXISTS `mdt_data` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.mdt_impound
+-- Dumping structure for table qpixel.mdt_impound
 CREATE TABLE IF NOT EXISTS `mdt_impound` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `vehicleid` int(11) NOT NULL,
@@ -355,7 +329,7 @@ CREATE TABLE IF NOT EXISTS `mdt_impound` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.mdt_incidents
+-- Dumping structure for table qpixel.mdt_incidents
 CREATE TABLE IF NOT EXISTS `mdt_incidents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `author` varchar(50) NOT NULL DEFAULT '',
@@ -372,7 +346,7 @@ CREATE TABLE IF NOT EXISTS `mdt_incidents` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.mdt_logs
+-- Dumping structure for table qpixel.mdt_logs
 CREATE TABLE IF NOT EXISTS `mdt_logs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `text` text NOT NULL,
@@ -383,7 +357,7 @@ CREATE TABLE IF NOT EXISTS `mdt_logs` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.mdt_reports
+-- Dumping structure for table qpixel.mdt_reports
 CREATE TABLE IF NOT EXISTS `mdt_reports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `author` varchar(50) DEFAULT NULL,
@@ -401,7 +375,7 @@ CREATE TABLE IF NOT EXISTS `mdt_reports` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.mdt_vehicleinfo
+-- Dumping structure for table qpixel.mdt_vehicleinfo
 CREATE TABLE IF NOT EXISTS `mdt_vehicleinfo` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `plate` varchar(50) DEFAULT NULL,
@@ -414,7 +388,7 @@ CREATE TABLE IF NOT EXISTS `mdt_vehicleinfo` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.occasion_vehicles
+-- Dumping structure for table qpixel.occasion_vehicles
 CREATE TABLE IF NOT EXISTS `occasion_vehicles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `seller` varchar(50) DEFAULT NULL,
@@ -430,7 +404,7 @@ CREATE TABLE IF NOT EXISTS `occasion_vehicles` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.oilrig_blender
+-- Dumping structure for table qpixel.oilrig_blender
 CREATE TABLE IF NOT EXISTS `oilrig_blender` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -441,7 +415,7 @@ CREATE TABLE IF NOT EXISTS `oilrig_blender` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.oilrig_cdu
+-- Dumping structure for table qpixel.oilrig_cdu
 CREATE TABLE IF NOT EXISTS `oilrig_cdu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -452,7 +426,7 @@ CREATE TABLE IF NOT EXISTS `oilrig_cdu` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.oilrig_position
+-- Dumping structure for table qpixel.oilrig_position
 CREATE TABLE IF NOT EXISTS `oilrig_position` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -467,7 +441,7 @@ CREATE TABLE IF NOT EXISTS `oilrig_position` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.oilrig_storage
+-- Dumping structure for table qpixel.oilrig_storage
 CREATE TABLE IF NOT EXISTS `oilrig_storage` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -479,7 +453,7 @@ CREATE TABLE IF NOT EXISTS `oilrig_storage` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.paychecks
+-- Dumping structure for table qpixel.paychecks
 CREATE TABLE IF NOT EXISTS `paychecks` (
   `citizenid` varchar(250) CHARACTER SET latin1 COLLATE latin1_spanish_ci DEFAULT NULL,
   `collectamount` int(255) DEFAULT NULL
@@ -487,7 +461,7 @@ CREATE TABLE IF NOT EXISTS `paychecks` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.permissions
+-- Dumping structure for table qpixel.permissions
 CREATE TABLE IF NOT EXISTS `permissions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -499,7 +473,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.phone_chatrooms
+-- Dumping structure for table qpixel.phone_chatrooms
 CREATE TABLE IF NOT EXISTS `phone_chatrooms` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `room_code` varchar(10) NOT NULL,
@@ -518,7 +492,7 @@ CREATE TABLE IF NOT EXISTS `phone_chatrooms` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.phone_chatroom_messages
+-- Dumping structure for table qpixel.phone_chatroom_messages
 CREATE TABLE IF NOT EXISTS `phone_chatroom_messages` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `room_id` int(10) unsigned DEFAULT NULL,
@@ -532,7 +506,7 @@ CREATE TABLE IF NOT EXISTS `phone_chatroom_messages` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.phone_debt
+-- Dumping structure for table qpixel.phone_debt
 CREATE TABLE IF NOT EXISTS `phone_debt` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -546,7 +520,7 @@ CREATE TABLE IF NOT EXISTS `phone_debt` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.phone_gallery
+-- Dumping structure for table qpixel.phone_gallery
 CREATE TABLE IF NOT EXISTS `phone_gallery` (
   `citizenid` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
@@ -555,7 +529,7 @@ CREATE TABLE IF NOT EXISTS `phone_gallery` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.phone_invoices
+-- Dumping structure for table qpixel.phone_invoices
 CREATE TABLE IF NOT EXISTS `phone_invoices` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -569,7 +543,7 @@ CREATE TABLE IF NOT EXISTS `phone_invoices` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.phone_messages
+-- Dumping structure for table qpixel.phone_messages
 CREATE TABLE IF NOT EXISTS `phone_messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -582,7 +556,7 @@ CREATE TABLE IF NOT EXISTS `phone_messages` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.phone_note
+-- Dumping structure for table qpixel.phone_note
 CREATE TABLE IF NOT EXISTS `phone_note` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -595,7 +569,7 @@ CREATE TABLE IF NOT EXISTS `phone_note` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.phone_tweets
+-- Dumping structure for table qpixel.phone_tweets
 CREATE TABLE IF NOT EXISTS `phone_tweets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -612,7 +586,7 @@ CREATE TABLE IF NOT EXISTS `phone_tweets` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.players
+-- Dumping structure for table qpixel.players
 CREATE TABLE IF NOT EXISTS `players` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) NOT NULL,
@@ -634,11 +608,11 @@ CREATE TABLE IF NOT EXISTS `players` (
   KEY `id` (`id`),
   KEY `last_updated` (`last_updated`),
   KEY `license` (`license`)
-) ENGINE=InnoDB AUTO_INCREMENT=291 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=487 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.player_boats
+-- Dumping structure for table qpixel.player_boats
 CREATE TABLE IF NOT EXISTS `player_boats` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -653,7 +627,7 @@ CREATE TABLE IF NOT EXISTS `player_boats` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.player_contacts
+-- Dumping structure for table qpixel.player_contacts
 CREATE TABLE IF NOT EXISTS `player_contacts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -666,7 +640,7 @@ CREATE TABLE IF NOT EXISTS `player_contacts` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.player_houses
+-- Dumping structure for table qpixel.player_houses
 CREATE TABLE IF NOT EXISTS `player_houses` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `house` varchar(50) NOT NULL,
@@ -685,7 +659,7 @@ CREATE TABLE IF NOT EXISTS `player_houses` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.player_mails
+-- Dumping structure for table qpixel.player_mails
 CREATE TABLE IF NOT EXISTS `player_mails` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -698,11 +672,11 @@ CREATE TABLE IF NOT EXISTS `player_mails` (
   `button` text DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `citizenid` (`citizenid`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.player_vehicles
+-- Dumping structure for table qpixel.player_vehicles
 CREATE TABLE IF NOT EXISTS `player_vehicles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `license` varchar(50) DEFAULT NULL,
@@ -733,11 +707,11 @@ CREATE TABLE IF NOT EXISTS `player_vehicles` (
   KEY `plate` (`plate`),
   KEY `citizenid` (`citizenid`),
   KEY `license` (`license`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.player_warns
+-- Dumping structure for table qpixel.player_warns
 CREATE TABLE IF NOT EXISTS `player_warns` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `senderIdentifier` varchar(50) DEFAULT NULL,
@@ -749,7 +723,7 @@ CREATE TABLE IF NOT EXISTS `player_warns` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.scenes
+-- Dumping structure for table qpixel.scenes
 CREATE TABLE IF NOT EXISTS `scenes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `creator` varchar(50) COLLATE utf8mb4_bin DEFAULT NULL,
@@ -767,7 +741,7 @@ CREATE TABLE IF NOT EXISTS `scenes` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.shared_vehicles
+-- Dumping structure for table qpixel.shared_vehicles
 CREATE TABLE IF NOT EXISTS `shared_vehicles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `plate` varchar(50) NOT NULL,
@@ -790,7 +764,7 @@ CREATE TABLE IF NOT EXISTS `shared_vehicles` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.stashitems
+-- Dumping structure for table qpixel.stashitems
 CREATE TABLE IF NOT EXISTS `stashitems` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `stash` varchar(255) NOT NULL DEFAULT '[]',
@@ -801,7 +775,7 @@ CREATE TABLE IF NOT EXISTS `stashitems` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.transaction_history
+-- Dumping structure for table qpixel.transaction_history
 CREATE TABLE IF NOT EXISTS `transaction_history` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` text NOT NULL,
@@ -817,7 +791,7 @@ CREATE TABLE IF NOT EXISTS `transaction_history` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.trunkitems
+-- Dumping structure for table qpixel.trunkitems
 CREATE TABLE IF NOT EXISTS `trunkitems` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `plate` varchar(255) NOT NULL DEFAULT '[]',
@@ -828,7 +802,7 @@ CREATE TABLE IF NOT EXISTS `trunkitems` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.users_current
+-- Dumping structure for table qpixel.users_current
 CREATE TABLE IF NOT EXISTS `users_current` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -843,7 +817,7 @@ CREATE TABLE IF NOT EXISTS `users_current` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.users_face
+-- Dumping structure for table qpixel.users_face
 CREATE TABLE IF NOT EXISTS `users_face` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -857,7 +831,7 @@ CREATE TABLE IF NOT EXISTS `users_face` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.users_hospital_patients
+-- Dumping structure for table qpixel.users_hospital_patients
 CREATE TABLE IF NOT EXISTS `users_hospital_patients` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` int(11) NOT NULL,
@@ -869,7 +843,7 @@ CREATE TABLE IF NOT EXISTS `users_hospital_patients` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.users_housing
+-- Dumping structure for table qpixel.users_housing
 CREATE TABLE IF NOT EXISTS `users_housing` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` int(11) NOT NULL,
@@ -881,7 +855,7 @@ CREATE TABLE IF NOT EXISTS `users_housing` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.users_housing_keys
+-- Dumping structure for table qpixel.users_housing_keys
 CREATE TABLE IF NOT EXISTS `users_housing_keys` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` int(11) NOT NULL,
@@ -892,7 +866,7 @@ CREATE TABLE IF NOT EXISTS `users_housing_keys` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.users_motel
+-- Dumping structure for table qpixel.users_motel
 CREATE TABLE IF NOT EXISTS `users_motel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` int(11) NOT NULL,
@@ -902,7 +876,7 @@ CREATE TABLE IF NOT EXISTS `users_motel` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.users_outfits
+-- Dumping structure for table qpixel.users_outfits
 CREATE TABLE IF NOT EXISTS `users_outfits` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -920,7 +894,7 @@ CREATE TABLE IF NOT EXISTS `users_outfits` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.users_tattoos
+-- Dumping structure for table qpixel.users_tattoos
 CREATE TABLE IF NOT EXISTS `users_tattoos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `citizenid` varchar(50) DEFAULT NULL,
@@ -931,7 +905,7 @@ CREATE TABLE IF NOT EXISTS `users_tattoos` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table arp3_0.warns
+-- Dumping structure for table qpixel.warns
 CREATE TABLE IF NOT EXISTS `warns` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
